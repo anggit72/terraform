@@ -9,10 +9,10 @@ pipeline {
     stages {
         stage('TF Plan') {
             steps{
-                sh 'terraform init'
-                sh 'terraform plan' 
                 sh 'yes | cp -i /var/lib/jenkins/tfstate/terraform.tfstate /var/lib/jenkins/workspace/aws-terraform/'
                 sh 'yes | cp -i /var/lib/jenkins/tfstate/terraform.tfstate.backup /var/lib/jenkins/workspace/aws-terraform/'                
+                sh 'terraform init'
+                sh 'terraform plan'                 
             }
           }
         
