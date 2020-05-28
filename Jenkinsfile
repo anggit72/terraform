@@ -21,5 +21,6 @@ pipeline {
                     sleep time: deploymentDelay.toInteger(), unit: 'MINUTES'
                 }
             }
-        }         
+        } 
+    }
 }
