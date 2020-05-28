@@ -8,9 +8,7 @@ pipeline {
     }
     stages {
         stage('TF Plan') {
-            steps{
-                sh 'yes | cp -i /var/lib/jenkins/tfstate/terraform.tfstate /var/lib/jenkins/workspace/aws-terraform/'
-                sh 'yes | cp -i /var/lib/jenkins/tfstate/terraform.tfstate.backup /var/lib/jenkins/workspace/aws-terraform/'                
+            steps{                
                 sh 'terraform init'
                 sh 'terraform plan'                 
             }
@@ -29,8 +27,6 @@ pipeline {
         stage('TF Apply') {
             steps {
                 sh 'terraform apply -auto-approve'
-                sh 'yes | cp -i /var/lib/jenkins/workspace/aws-terraform/terraform.tfstate /var/lib/jenkins/tfstate'
-                sh 'yes | cp -i /var/lib/jenkins/workspace/aws-terraform/terraform.tfstate.backup /var/lib/jenkins/tfstate'
       }
     }
         stage('Approval Destroy') {
@@ -45,9 +41,7 @@ pipeline {
         } 
         stage('TF Destroy') {
             steps {
-                sh 'terraform destroy -auto-approve'
-                sh 'yes | cp -i /var/lib/jenkins/workspace/aws-terraform/terraform.tfstate /var/lib/jenkins/tfstate'
-                sh 'yes | cp -i /var/lib/jenkins/workspace/aws-terraform/terraform.tfstate.backup /var/lib/jenkins/tfstate'                
+                sh 'terraform destroy -auto-approve'               
       }
     }             
   }
