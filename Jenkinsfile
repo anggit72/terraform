@@ -10,7 +10,7 @@ pipeline {
         stage('TF Plan') {
             steps{
                 sh 'terraform init'
-                sh 'terraform plan'             
+                sh 'terraform plan -out myplan'             
             }
           }
         
