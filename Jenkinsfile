@@ -8,8 +8,10 @@ pipeline {
     }
     stages {
         stage('TF Plan') {
-           sh 'terraform init'
-           sh 'terraform plan -out myplan'
+            steps{
+                sh 'terraform init'
+                sh 'terraform plan -out myplan'             
+            }
           }
         
         stage('Approval') {
