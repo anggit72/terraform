@@ -3,5 +3,6 @@ terraform {
     bucket = "terraform.state123"
     region = "ap-southeast-1"
     key = "terraform.tfstate" 
+    credentials = "~/.aws/credentials"
   }
 }
