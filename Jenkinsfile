@@ -26,7 +26,7 @@ pipeline {
         } 
         stage('TF Apply') {
             steps {
-                sh 'terraform apply -input=false'
+                sh 'terraform apply -input=yes'
       }
     }
         stage('Approval Destroy') {
@@ -41,7 +41,7 @@ pipeline {
         } 
         stage('TF Destroy') {
             steps {
-                sh 'terraform destroy -input=false'
+                sh 'terraform destroy -input=yes'
       }
     }             
   }
