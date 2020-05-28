@@ -8,7 +8,8 @@ pipeline {
     }
     stages {
         stage('TF Plan') {
-            steps{                
+            steps{    
+                sh 'cd /var/lib/jenkins/workspace/aws-terraform/'
                 sh 'terraform init'
                 sh 'terraform plan'                 
             }
@@ -26,6 +27,7 @@ pipeline {
         } 
         stage('TF Apply') {
             steps {
+                sh 'cd /var/lib/jenkins/workspace/aws-terraform/'                
                 sh 'terraform apply -auto-approve'
       }
     }
@@ -41,6 +43,7 @@ pipeline {
         } 
         stage('TF Destroy') {
             steps {
+                sh 'cd /var/lib/jenkins/workspace/aws-terraform/'                
                 sh 'terraform destroy -auto-approve'               
       }
     }             
